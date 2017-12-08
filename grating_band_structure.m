@@ -53,10 +53,6 @@ for i=1:length(k_plane)
     [M,Index] = min(Z(:));
     [I_row, I_col] = ind2sub(size(Z),Index);
     
-    temp_vec = [(w_re - X_mesh_width/2) + I_col * X_mesh_width/(N_X-1), ...
-        (w_im - Y_mesh_width/2) + I_row * Y_mesh_width/(N_Y-1), ...
-        Z(I_row,I_col)];
-    
     results(i,1) = (w_re - X_mesh_width/2) + I_col * X_mesh_width/(N_X-1);
     results(i,2) = (w_im - Y_mesh_width/2) + I_row * Y_mesh_width/(N_Y-1);
     results(i,3) = Z(I_row,I_col);
@@ -64,7 +60,7 @@ for i=1:length(k_plane)
     fprintf('i = %d / %d\n', i, length(k_plane));
     
 end
-% 
+
 figure;
 plot(k_plane, results(:,1),'linewidth',3);
 hold on;
