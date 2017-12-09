@@ -1,0 +1,17 @@
+epsilon_r = 11.68; % silicon permitivity
+chi = epsilon_r - 1; % Assuming uniform distribution where present
+pitch = 200e-7;
+ffactor = 0.5; % Filling Factors
+k_plane = 0;
+Nsearch = 12;
+Nplot = 200;
+N = 30;
+search_re = 80.9;
+search_im = 0.1;
+search_re_width = 2.0;
+search_im_width = 0.5;
+search_re_N = 300;
+search_im_N = 300;
+plot_my_band(chi,pitch,ffactor,k_plane,Nsearch,Nplot,N, ...
+    1, search_re, search_im, search_re_width,search_im_width, ...
+    search_re_N, search_im_N);
