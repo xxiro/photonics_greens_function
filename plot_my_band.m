@@ -11,6 +11,6 @@ function plot_my_band(chi,pitch,ffactor,k_plane,Nsearch,Nplot,N, Nth_band, ...
 
 M = Chi_matrix(chi, pitch, ffactor, k_plane, w_re, w_im, N);
 
-vec = get_one_eig_vec(M, N);
+vec = get_one_eig_vec(M, 2*N+1);
 
 plot_fourier_terms(vec,N,pitch,k_plane,Nplot);

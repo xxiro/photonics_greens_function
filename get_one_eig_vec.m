@@ -6,12 +6,14 @@ function val = get_one_eig_vec(M, N)
 % - M: square NxN matrix input
 % - N: width of M
 
-[V,D] = eig(M);
+[V,D] = eig(M, eye(N));
 
-arr = zeros(N,1);
+arr = 10000*ones(N,1);
 
 for i=1:N
-    arr(i) = D(i,i);
+    if isfinite(D(i,i)) == 1
+        arr(i) = D(i,i);
+    end
 end
 arr = abs( arr - 1);
 
