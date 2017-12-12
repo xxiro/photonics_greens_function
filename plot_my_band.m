@@ -8,6 +8,9 @@ function plot_my_band(chi,pitch,ffactor,k_plane,Nsearch,Nplot,N, Nth_band, ...
                                         search_re, search_im, ...
                                         search_re_width, search_im_width, ...
                                         search_re_N, search_im_N);
+if w_re == -1 && w_im == 0
+    error('No valid omega values found using mesh-minimum')
+end
 
 M = Chi_matrix(chi, pitch, ffactor, k_plane, w_re, w_im, N);
 

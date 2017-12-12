@@ -21,8 +21,11 @@ function [w_re, w_im] = find_band(chi, pitch, ffactor, k_plane, N, ...
 %                 search_re values
 %  - search_im_N: corresponding array for imag-axis granularity about 
 %                 search_im values
+% Returns:
+% Real and imaginary components of omega or w_re=-1 and w_im=0 if no
+% valid value is found.
 
-w_re = 0;
+w_re = -1;
 w_im = 0;
 
 if length(search_re) ~= length(search_re_width)
