@@ -3,9 +3,7 @@ function fval = Chi_matrix_deter_abs(chi, pitch, ffactor, k_plane, w_re, w_im, N
 w = w_re + 1i*w_im;
     
 if N ~=0
-    n = -(2*N):1:(2*N); % totally 4N+1 fourier terms for chi
-    %chi_hat_n = 1/(2*pi*1i)*(1./n).*(1-exp(-1i*2*n*pi*ffactor));
-    %chi_hat_n(2*N+1) = ffactor;
+    n = -(2*N):1:(2*N);
 
     M = zeros(2*N+1);
     
@@ -17,8 +15,6 @@ if N ~=0
             
         end
     end
-            
-
 else
     
     M = 2*pi*1i*w^2*chi*ffactor/(sqrt(w^2-k_plane^2));

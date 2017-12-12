@@ -5,6 +5,7 @@ function [w_re, w_im] = find_band(chi, pitch, ffactor, k_plane, N, ...
                                         search_re_N, search_im_N)
 % FIND_BAND  Finds the first valid omega values by searching iterative
 %            meshes. Searches along the imag direction first for each real.
+%
 %  Parameters:
 %  - chi: value of chi magnitude [double]
 %  - pitch: pitch of grating [double]

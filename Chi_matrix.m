@@ -1,4 +1,6 @@
 function M = Chi_matrix(chi, pitch, ffactor, k_plane, w_re, w_im, N)
+% CHI_MATRIX
+% Returns the Green's function matrix for a periodic grating
 
 w = w_re + 1i*w_im;
 
