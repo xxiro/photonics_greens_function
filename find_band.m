@@ -1,5 +1,5 @@
 
-function [w_re, w_im] = find_band(chi, pitch, ffactor, k_plane, N, ...
+function [w_re, w_im] = find_band(chi, pitch, ffactor, k_plane, N,plots, ...
                                         search_re, search_im, ...
                                         search_re_width, search_im_width, ...
                                         search_re_N, search_im_N)
@@ -12,6 +12,8 @@ function [w_re, w_im] = find_band(chi, pitch, ffactor, k_plane, N, ...
 %  - ffactor: filling factor of grating [double]
 %  - k_plane: in-plane k-vector magnitude [double]
 %  - N: 2*N+1 Fourier terms are used in determinant calculations [int]
+%  - plots: 0 = value will not be plotted; 1 = plot only on finding valid
+%               omega; 2 = force plotting
 %  - search_re: real values to center grid searches at [double array]
 %  - search_im: imag values to center grid searches at [double array]
 %  - search_re_width: corresponding array for total widths
@@ -58,22 +60,35 @@ for i = 1:length(search_re)
             end
         end
         
-        [M,Index] = min(Z(:));
+        [~,Index] = min(Z(:));
         [I_row, I_col] = ind2sub(size(Z),Index); 
         
         if (I_row ~= 1) && (I_row ~= length(Y_val)) && ...
                 (I_col ~= 1) && (I_col ~= length(X_val))
+
             
             w_re = X_val(I_col);
             w_im = Y_val(I_row);
-            [X,Y] = meshgrid(X_val,Y_val);
             
-            figure;
-            surf(X,Y,log(Z),'edgealpha',0);
+            %Plot on success
+            if plots >= 1
+                [X,Y] = meshgrid(X_val,Y_val);
+                figure;
+                surf(X,Y,log(Z),'edgealpha',0);
+            end
             
             return;
         end
+        
+        
     end
+end
+
+%Force plotting
+if plots == 2
+    [X,Y] = meshgrid(X_val,Y_val);
+    figure;
+    surf(X,Y,log(Z),'edgealpha',0);
 end
 
 end % Of function
